@@ -23,7 +23,7 @@
  * en la tarjeta del invitado/a el coste de ambos servicios. 
  */
 
-package ricksy.business;
+package edu.teamrocket;
 
 public class RicksyBusiness {
     
