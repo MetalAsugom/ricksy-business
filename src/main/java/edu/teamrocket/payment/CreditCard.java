@@ -12,7 +12,7 @@ public class CreditCard implements PaymentMethod {
 
     @Override
     public boolean pay(double fee) {
-        boolean isEnough = (this.credit - fee != this.credit);
+        boolean isEnough = (this.credit - fee > 0);
         if (isEnough) {
             this.credit -= fee;
             return isEnough;
