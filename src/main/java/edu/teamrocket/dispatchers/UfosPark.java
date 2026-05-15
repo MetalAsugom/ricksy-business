@@ -12,25 +12,26 @@ import edu.teamrocket.payment.PaymentMethod;
 public class UfosPark {
 
     private Map<String, String> flota = new HashMap<>();
-    private static final double fee = 500;
+    private static final double FEE = 500;
 
     public void add(String ovni) {
         flota.putIfAbsent(ovni, null);
     }
 
-    public void dispatch(PaymentMethod usuario){
+    public void dispatch(PaymentMethod usuario) {
         if (!flota.containsValue(usuario.number())) {
             for (var entry : flota.entrySet()) {
-                if (Objects.equals(entry.getValue(), null) && usuario.pay(fee)) {
+                if (Objects.equals(entry.getValue(), null) && usuario.pay(FEE)) {
                     entry.setValue(usuario.number());
                     break;
                 }
             }
         }
     }
+
     public String getUfoOf(String numero) {
         for (var ovni : flota.entrySet()) {
-            if(Objects.equals(ovni.getValue(), numero)) {
+            if (Objects.equals(ovni.getValue(), numero)) {
                 return ovni.getKey();
             }
         }
