@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class UfosParkTest {
+public class UfosParkTest {
 
     public UfosPark ufos = null;
     String[] ovnis = { "unx", "dox", "trex" };
