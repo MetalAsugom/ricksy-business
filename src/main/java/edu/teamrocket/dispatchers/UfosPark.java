@@ -1,9 +1,13 @@
 package edu.teamrocket.dispatchers;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
-import edu.teamrocket.payment.CreditCard;
+import edu.teamrocket.payment.PaymentMethod;
 
 public class UfosPark {
 
@@ -14,19 +18,37 @@ public class UfosPark {
         flota.putIfAbsent(ovni, null);
     }
 
-    public void dispatch(CreditCard usuario){
-
-        if (flota.containsValue(usuario.number()) && usuario.pay(fee)) {
-            usuario.pay(fee);
-            for (var ovni : flota.keySet()) {
-                flota.putIfAbsent(ovni, usuario.number());
+    public void dispatch(PaymentMethod usuario){
+        if (!flota.containsValue(usuario.number())) {
+            for (var entry : flota.entrySet()) {
+                if (Objects.equals(entry.getValue(), null) && usuario.pay(fee)) {
+                    entry.setValue(usuario.number());
+                    break;
+                }
             }
-            
-            
-            
-            /*x -> flota.replace(x, usuario.number()) == null)*/;
-        } else {
-            
         }
+    }
+    public String getUfoOf(String numero) {
+        for (var ovni : flota.entrySet()) {
+            if(Objects.equals(ovni.getValue(), numero)) {
+                return ovni.getKey();
+            }
+        }
+        return null;
+    }
+
+    public boolean containsCard(String numero) {
+        return flota.containsValue(numero);
+    }
+
+    public Collection<String> cardNumbers() {
+        return flota.values();
+    }
+
+    @Override
+    public String toString() {
+        String[] ufosID = this.flota.keySet().toArray(new String[flota.size()]);
+        Arrays.sort(ufosID);
+        return List.of(ufosID).toString();
     }
 }
