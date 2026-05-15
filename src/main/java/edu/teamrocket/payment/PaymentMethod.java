@@ -4,5 +4,7 @@ public interface PaymentMethod {
 
     boolean pay(double fee);
 
-    String cardNumbers();
+    String number();
+
+    double credit();
 }
