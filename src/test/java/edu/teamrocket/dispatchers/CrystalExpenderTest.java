@@ -1,39 +1,39 @@
-package ricksy.business.dispatchers;
+package edu.teamrocket.dispatchers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import ricksy.business.payment.CreditCard;
-import ricksy.business.payment.PaymentMethod;
+import edu.teamrocket.payment.CreditCard;
+import edu.teamrocket.payment.PaymentMethod;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 
-public class CrystalExpenderTest {
+class CrystalExpenderTest {
 
     private CrystalExpender expender = null;
 
-    @Before
-    public void setupExpender() {
+    @BeforeEach
+    void setupExpender() {
         expender = new CrystalExpender(100, 50.0);
-        assertNotNull("Expender creado", expender);
+        assertNotNull(expender, "Expender creado");
     }
 
     @Test 
-    public void constructortest() {  
-        assertNotNull("Expender creado", expender);      
+    void constructortest() {  
+        assertNotNull(expender, "Expender creado");
         assertEquals(100, expender.stock());
     }
 
     @Test
-    public void dispatchTestOK() {
+    void dispatchTestOK() {
         PaymentMethod card = new CreditCard("Abradolf Lincler", "4916119711304546");
         expender.dispatch(card);
         assertEquals(99, expender.stock());
     }
 
     @Test
-    public void dispatchTestNoStock() {
+    void dispatchTestNoStock() {
         PaymentMethod card = new CreditCard("Abradolf Lincler", "4916119711304546");
         expender = new CrystalExpender(0, 50.0);
         expender.dispatch(card);
@@ -42,7 +42,7 @@ public class CrystalExpenderTest {
     }
 
     @Test
-    public void dispatchTestNoCredit() {
+    void dispatchTestNoCredit() {
         PaymentMethod card = new CreditCard("Abradolf Lincler", "4916119711304546");
         expender = new CrystalExpender(100, 4000);
         expender.dispatch(card);
