@@ -22,10 +22,11 @@ public class CreditCard implements PaymentMethod {
     }
 
     @Override
-    public String cardNumbers() {
+    public String number() {
         return this.number;
     }
-
+    
+    @Override
     public double credit() {
         return this.credit;
     }
