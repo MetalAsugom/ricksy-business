@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UfosParkTest {
 
@@ -33,7 +32,7 @@ public class UfosParkTest {
         
         List<String> cards = ufos.cardNumbers()
                                 .stream()
-                                .collect(Collectors.toList());
+                                .toList();
         assertEquals(ovnis.length, cards.size());
     }
 
@@ -45,7 +44,7 @@ public class UfosParkTest {
         List<String> cards = ufos.cardNumbers()
                                     .stream()
                                     .filter(n -> n == card.number())
-                                    .collect(Collectors.toList());
+                                    .toList();
 
         assertEquals(1, cards.size());
         assertEquals(2500, card.credit());
@@ -69,7 +68,7 @@ public class UfosParkTest {
         List<String> cards = ufos.cardNumbers()
                                     .stream()
                                     .filter(n -> n == card.number())
-                                    .collect(Collectors.toList());
+                                    .toList();
 
         assertEquals(1, cards.size());
         assertEquals(2500, card.credit());
@@ -89,7 +88,7 @@ public class UfosParkTest {
         List<String> cards = ufos.cardNumbers()
                                     .stream()
                                     .filter(n -> n == morty.number())
-                                    .collect(Collectors.toList());
+                                    .toList();
 
         assertEquals(0, cards.size());
         assertEquals(3000, morty.credit());
