@@ -7,18 +7,17 @@ import edu.teamrocket.dispatchers.UfosParkTest;
 import edu.teamrocket.payment.CreditCard;
 import edu.teamrocket.payment.PaymentMethod;
 
-import org.junit.jupiter.api.Assertions;
-
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
-public class ReceptivoTest {
+class ReceptivoTest {
 
     private Receptivo receptivo = null;
     private UfosParkTest parkTest = null;
     private CrystalExpender packExpender = null;
 
-    @Before
-    public void setupTest() {
+    @BeforeEach
+    void setupTest() {
 
         parkTest = new UfosParkTest();
         parkTest.setupUfosPark();
@@ -31,7 +30,7 @@ public class ReceptivoTest {
     }
 
     @Test
-    public void SingletonReceptivo() {
+    void SingletonReceptivo() {
         receptivo = Receptivo.getReceptivo();
         assertNotNull(receptivo);
         Receptivo otroReceptivo = Receptivo.getReceptivo();
@@ -40,7 +39,7 @@ public class ReceptivoTest {
     }
 
     @Test
-    public void dispatchTest() {
+    void dispatchTest() {
 
         PaymentMethod card = new CreditCard("Abradolf Lincler", "4916119711304546");
         receptivo.dispatch(card);
@@ -51,7 +50,7 @@ public class ReceptivoTest {
     }
 
     @Test
-    public void dispatchNoCreditTest() {
+    void dispatchNoCreditTest() {
 
         PaymentMethod card = new CreditCard("Abradolf Lincler", "4916119711304546");
         assertTrue(card.pay(2990));
