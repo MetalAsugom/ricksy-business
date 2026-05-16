@@ -1,15 +1,17 @@
 package edu.teamrocket.dispatchers;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.teamrocket.payment.CreditCard;
 import edu.teamrocket.payment.PaymentMethod;
-
-import org.junit.jupiter.api.BeforeEach;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class UfosParkTest {
 
@@ -17,7 +19,7 @@ public class UfosParkTest {
     String[] ovnis = { "unx", "dox", "trex" };
 
     @BeforeEach
-    void setupUfosPark() {
+    public void setupUfosPark() {
         ufos = new UfosPark();
         assertNotNull(ufos, "Parque de UFOS creados");
         for (String ovni : ovnis) {
