@@ -32,4 +32,13 @@ public class CreditCard implements PaymentMethod {
     public String cardOwner() {
         return this.owner;
     }
+
+    @Override
+    public String toString() {
+        return """
+                owner: %s
+                number: %s
+                credit: %.2fEZI
+                """.formatted(cardOwner(), number(), credit());
+    }
 }
