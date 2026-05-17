@@ -11,7 +11,7 @@ public class Receptivo {
 
     private List<GuestDispatcher> receptivo = new ArrayList<>();
 
-    public Receptivo() {
+    private  Receptivo() {
     }
 
     public void registra(GuestDispatcher dispatcher) {
